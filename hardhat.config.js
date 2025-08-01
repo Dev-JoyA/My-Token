@@ -1,6 +1,18 @@
-require("@nomicfoundation/hardhat-toolbox");
+require("@nomicfoundation/hardhat-toolbox");;
+
+const PRIVATE_KEY = vars.get("PRIVATE_KEY");
+const ALCHEMY_API_KEY = vars.get("ALCHEMY_API_KEY");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.28",
+  network: "sepolia",
+
+  networks: {
+    sepolia: {
+      url: `https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY}`,
+      accounts: [PRIVATE_KEY],
+    }
+  },
 };
+
